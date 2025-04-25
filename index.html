@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cong Hoang - App Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="profile-container">
+                <h1>Cong Hoang</h1>
+                <p class="subtitle">Senior Mobile Engineer</p>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h2>Welcome to My App Portfolio</h2>
+                <p class="subtitle">Discover my collection of thoughtfully crafted mobile applications</p>
+            </div>
+        </section>
+
+        <!-- Tchat App Section -->
+        <section class="app-showcase">
+            <div class="container">
+                <div class="app-header">
+                    <div class="app-title">
+                        <img src="icons/app-icon.png" alt="Tchat Logo" class="app-icon">
+                        <h2>Tchat</h2>
+                    </div>
+                    <p class="app-description">A modern messaging platform that combines security, style, and seamless communication.</p>
+                </div>
+
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <h3>🔒 Secure Messaging</h3>
+                        <p>End-to-end encryption ensures your conversations remain private</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>📸 Rich Media Sharing</h3>
+                        <p>Send images, videos, voice messages, and files effortlessly</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>⭐️ Status Updates</h3>
+                        <p>Share and view 24-hour status updates with friends</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>🌙 Beautiful Dark Theme</h3>
+                        <p>Easy on the eyes with a modern, minimalist design</p>
+                    </div>
+                </div>
+
+                <div class="platform-tabs">
+                    <button class="platform-tab active" onclick="switchPlatform('ios')">iOS Version</button>
+                    <button class="platform-tab" onclick="switchPlatform('android')">Android Version</button>
+                </div>
+
+                <!-- iOS Screenshots -->
+                <div id="ios-content" class="platform-content active">
+                    <div class="screenshot-grid">
+                        <div class="screenshot-item">
+                            <div class="device-frame">
+                                <img src="screenshots/ios/connect.png" alt="Connect with ease" class="screenshot">
+                            </div>
+                            <h3>Connect with Ease</h3>
+                            <p>Start your journey with a simple and secure sign-up process</p>
+                        </div>
+                        <div class="screenshot-item">
+                            <div class="device-frame">
+                                <img src="screenshots/ios/sign-in.png" alt="Sign in seamlessly" class="screenshot">
+                            </div>
+                            <h3>Sign in Seamlessly</h3>
+                            <p>Multiple sign-in options including Google and Apple</p>
+                        </div>
+                        <div class="screenshot-item">
+                            <div class="device-frame">
+                                <img src="screenshots/ios/chat-list.png" alt="All chats in one place" class="screenshot">
+                            </div>
+                            <h3>All Your Chats</h3>
+                            <p>Access all your conversations in one organized place</p>
+                        </div>
+                        <div class="screenshot-item">
+                            <div class="device-frame">
+                                <img src="screenshots/ios/start-chat.png" alt="Start chatting" class="screenshot">
+                            </div>
+                            <h3>Start Chatting</h3>
+                            <p>Begin new conversations with a simple tap</p>
+                        </div>
+                        <div class="screenshot-item">
+                            <div class="device-frame">
+                                <img src="screenshots/ios/profile.png" alt="Control your profile" class="screenshot">
+                            </div>
+                            <h3>Manage Profile</h3>
+                            <p>Customize your experience with powerful settings</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Android Screenshots -->
+                <div id="android-content" class="platform-content">
+
+                    <div class="screenshot-grid">
+                        <div class="screenshot-item">
+                            <div class="device-frame">
+                                <img src="screenshots/android/connect.png" alt="Connect with ease" class="screenshot">
+                            </div>
+                            <h3>Connect with Ease</h3>
+                            <p>Start your journey with a simple and secure sign-up process</p>
+                        </div>
+                        <div class="screenshot-item">
+                            <div class="device-frame">
+                                <img src="screenshots/android/start-chat.png" alt="Start chatting" class="screenshot">
+                            </div>
+                            <h3>Start Chatting</h3>
+                            <p>Begin new conversations with a simple tap</p>
+                        </div>
+                        <div class="screenshot-item">
+                            <div class="device-frame">
+                                <img src="screenshots/android/profile.png" alt="Control your profile" class="screenshot">
+                            </div>
+                            <h3>Manage Profile</h3>
+                            <p>Customize your experience with powerful settings</p>
+                        </div>
+                        <div class="screenshot-item">
+                            <div class="device-frame">
+                                <img src="screenshots/android/chat-list.png" alt="All chats in one place" class="screenshot">
+                            </div>
+                            <h3>All Your Chats</h3>
+                            <p>Access all your conversations in one organized place</p>
+                        </div>
+                        <div class="screenshot-item">
+                            <div class="device-frame">
+                                <img src="screenshots/android/sign-in.png" alt="Sign in seamlessly" class="screenshot">
+                            </div>
+                            <h3>Sign in Seamlessly</h3>
+                            <p>Multiple sign-in options including Google and Apple</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="app-security">
+                    <h3>Security First</h3>
+                    <p>Your privacy matters. Our app features robust security measures including end-to-end encryption, secure authentication, and the ability to block users and delete chats permanently.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Template for future apps -->
+        <section class="app-showcase app-showcase-template" style="display: none;">
+            <div class="container">
+                <div class="app-header">
+                    <div class="app-title">
+                        <img src="path-to-icon.png" alt="App Name" class="app-icon">
+                        <h2>App Name</h2>
+                    </div>
+                    <p class="app-description">Brief description of the app</p>
+                </div>
+
+                <div class="feature-grid">
+                    <!-- Features will go here -->
+                </div>
+
+                <div class="screenshot-grid">
+                    <!-- Screenshots will go here -->
+                </div>
+            </div>
+        </section>
+
+        <section class="contact">
+            <div class="container">
+                <h2>Contact & Support</h2>
+                <p>For support inquiries about any of my apps, please contact:</p>
+                <p class="contact-info">
+                    <strong>Name:</strong> Cong Hoang<br>
+                    <strong>Email:</strong> <a href="mailto:jackhoang2411@gmail.com">jackhoang2411@gmail.com</a>
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Cong Hoang. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html> 
