@@ -1,15 +1,71 @@
-function switchPlatform(platform) {
-    // Update tabs
-    document.querySelectorAll('.platform-tab').forEach(tab => {
-        tab.classList.remove('active');
-    });
-    document.querySelector(`.platform-tab[onclick*="${platform}"]`).classList.add('active');
+// Navigation functionality
+document.addEventListener('DOMContentLoaded', () => {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.side-nav a');
 
-    // Update content
-    document.querySelectorAll('.platform-content').forEach(content => {
-        content.classList.remove('active');
+    // Smooth scroll to section
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            targetSection.scrollIntoView({ behavior: 'smooth' });
+        });
     });
+
+    // Update active section on scroll
+    function updateActiveSection() {
+        const scrollPosition = window.scrollY;
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 100;
+            const sectionHeight = section.offsetHeight;
+            const sectionId = section.getAttribute('id');
+
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${sectionId}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }
+
+    // Initial check for active section
+    updateActiveSection();
+
+    // Update active section on scroll
+    window.addEventListener('scroll', updateActiveSection);
+});
+
+// Platform switching functionality
+let currentSlide = {
+    'ios': 0,
+    'android': 0
+};
+
+function switchPlatform(platform) {
+    const tabs = document.querySelectorAll('.platform-tab');
+    const contents = document.querySelectorAll('.platform-content');
+
+    tabs.forEach(tab => tab.classList.remove('active'));
+    contents.forEach(content => content.classList.remove('active'));
+
+    document.querySelector(`button[onclick="switchPlatform('${platform}')"]`).classList.add('active');
     document.getElementById(`${platform}-content`).classList.add('active');
+}
+
+function moveSlide(platform, direction) {
+    const track = document.querySelector(`#${platform}-content .slider-track`);
+    const slides = track.querySelectorAll('.slide');
+    const slideWidth = slides[0].offsetWidth + 32; // Including gap
+    const maxSlides = slides.length;
+    
+    currentSlide[platform] = (currentSlide[platform] + direction + maxSlides) % maxSlides;
+    
+    track.style.transform = `translateX(-${currentSlide[platform] * slideWidth}px)`;
 }
 
 // Slider functionality
@@ -17,34 +73,6 @@ const sliderStates = {
     ios: { currentIndex: 0 },
     android: { currentIndex: 0 }
 };
-
-function moveSlide(platform, direction) {
-    const sliderTrack = document.querySelector(`#${platform}-content .slider-track`);
-    const slides = document.querySelectorAll(`#${platform}-content .slide`);
-    const totalSlides = slides.length;
-    
-    // Calculate how many slides to move based on screen width
-    let slidesToMove = 3;
-    if (window.innerWidth <= 1024) {
-        slidesToMove = 2;
-    }
-    if (window.innerWidth <= 768) {
-        slidesToMove = 1;
-    }
-    
-    sliderStates[platform].currentIndex += direction * slidesToMove;
-    
-    // Handle wrap-around
-    if (sliderStates[platform].currentIndex < 0) {
-        sliderStates[platform].currentIndex = totalSlides - slidesToMove;
-    } else if (sliderStates[platform].currentIndex >= totalSlides) {
-        sliderStates[platform].currentIndex = 0;
-    }
-    
-    const slideWidth = 100 / slidesToMove;
-    const offset = -sliderStates[platform].currentIndex * slideWidth;
-    sliderTrack.style.transform = `translateX(${offset}%)`;
-}
 
 // Handle window resize
 let resizeTimeout;
